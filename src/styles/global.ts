@@ -2,9 +2,11 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --background: #18181E;
-    --header: #21212B;
+    --background: #191622;
+    --header: #13111B;
+
     --yellow: #FFE81F;
+    --white: #FFFFFF;
   }
   
   * {
@@ -46,4 +48,4 @@ export const GlobalStyle = createGlobalStyle`
       opacity: 0.6;
       cursor: not-allowed;
   }
-`
+`;
