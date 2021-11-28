@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { GiLightSabers } from 'react-icons/gi';
 import { Container, Content } from './styles'
 
@@ -9,8 +10,12 @@ export function Header() {
         <h1>Star Wars</h1>
       </Content>
       <Content>
-        <button type="button">Buscar</button>
-        <button type="button">Favoritos</button>
+        <button type="button">
+          <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Buscar</Link>
+        </button>
+        <button type="button">
+          <Link to="/favorites" style={{ textDecoration: 'none', color: 'white' }}>Favoritos</Link>
+        </button>
       </Content>
     </Container>
   )

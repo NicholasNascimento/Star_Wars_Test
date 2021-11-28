@@ -1,9 +1,19 @@
-import { Header } from "../../components/Header";
-import { Container, Content } from "./styles";
+import { Link } from "react-router-dom";
 
+import { Header } from "../../components/Header";
+import { useContext } from "react";
+import { DataContext } from "../../DataContext";
+
+import { Container, Content } from "./styles";
 import { GiSpaceship } from 'react-icons/gi';
 
+
 export function Home() {
+  const {search, char} = useContext(DataContext);
+ 
+
+  console.log(char);
+
   return (
     <>
       <Header />
@@ -14,7 +24,9 @@ export function Home() {
           </div>
           <input placeholder="Buscar personagem"/>
         </Content>
-        <button>Buscar</button>
+        <button>
+          <Link to="/character" style={{ textDecoration: 'none', color: 'white' }}>Buscar</Link>
+        </button>
       </Container>
     </>
   )
