@@ -6,7 +6,7 @@ export const Container = styled.div`
     
   p {
     font-size: 20px;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
     color: white;
   }
 
