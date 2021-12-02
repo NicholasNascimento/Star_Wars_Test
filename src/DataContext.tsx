@@ -22,11 +22,11 @@ interface PeopleProps {
   birth_year: string;
   gender: string;
   homeworld: string;
-  films: [''];
-  species: [''];
-  vehicles: [''];
-  starships: [''];
-  url: [''];
+  films: string[];
+  species: string[];
+  vehicles: string[];
+  starships: string[];
+  url: string;
 }
 
 interface PlanetsProps {
@@ -37,25 +37,24 @@ interface PlanetsProps {
   climate: string;
   gravity: string;
   terrain: string;
-  surface_water: string;
   population: string;
-  residents: [''];
-  films: [''];
+  residents: string[];
+  films: string[];
   url: string;
 }
 
 interface FilmsProps {
   title: string;
   episode_id: number;
-  opening_crawl: string;
   director: string;
   producer: string;
   released_date: string;
-  characters: [''];
-  planets: [''];
-  vehicles: [''];
-  species: [''];
-  url: [''];
+  characters: string[];
+  planets: string[];
+  starships: string[];
+  vehicles: string[];
+  species: string[];
+  url: string;
 }
 
 interface SpeciesProps {
@@ -69,8 +68,9 @@ interface SpeciesProps {
   average_lifespan: string;
   homeworld: string;
   language: string;
-  people: [''];
-  films: [''];
+  people: string[];
+  films: string[];
+  url: string;
 }
 
 interface VehiclesProps {
@@ -85,8 +85,9 @@ interface VehiclesProps {
   cargo_capacity: string;
   consumables: string;
   vehicle_class: string;
-  pilots: [''];
-  films: [''];
+  pilots: string[];
+  films: string[];
+  url: string;
 }
 
 interface StarshipsProps {
@@ -103,8 +104,9 @@ interface StarshipsProps {
   hyperdrive_rating: string;
   MGLT: string;
   starship_class: string;
-  pilots: [''];
-  films: [''];
+  pilots: string[];
+  films: string[];
+  url: string;
 }
 
 interface UserContextProps {
