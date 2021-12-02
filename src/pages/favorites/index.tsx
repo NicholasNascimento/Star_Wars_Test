@@ -1,31 +1,41 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 import { Header } from "../../components/Header";
 import { DataContext } from "../../DataContext";
 
 import { Container } from "./styles";
 
-export function Favorites() {
-  const { name } = useContext(DataContext);
-  const favoritesList = [];
+interface FavoriteListProps {
+  key: string;
+  name: string;
+}
 
-  favoritesList.push(...[name])
+export function Favorites() {
+  const favoritesList: FavoriteListProps[] = JSON.parse(localStorage.getItem('name')!);
+  const { search, inputError, setInputError } = useContext(DataContext);
+  const { register } = useForm();
+
+  async function handleMove(data: string) {
+    if(!inputError) {
+      search(data);
+    } else {
+      setInputError(false);
+      search(data);
+    }
+  }
 
   return (
     <>
       <Header />
       <Container>
-          {favoritesList.map(favorites => {
-            return (
-              <button key={name}>
-                {(favorites !== '') && 
-                  <Link to="/character" style={{ textDecoration: 'none', color: 'var(--yellow)' }}>
-                    {favorites}
-                  </Link>}
-              </button>
-            )
-          })}
+        {favoritesList.map(fav => {
+          return (
+            <ul key={fav.key}>
+              <strong onClick={() => handleMove(fav.name)} {...register("charName", { required: true })}>{fav.name}</strong>
+            </ul>
+          )
+        })}
       </Container>
     </>
   )

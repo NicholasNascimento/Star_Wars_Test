@@ -2,22 +2,17 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;
-  margin-left: 45%;
   text-align: center;
 
-  button {
-    width: 14rem;
-    height: 4rem;
-    font-size: 1rem;
-    background: var(--background);
-    border:0;
+  ul {
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+    padding: 2rem 0 0.5rem 0;
     border-bottom: 1px solid var(--yellow);
-    
+  }
 
-    transition: filter 0.2s;
-
-    &:hover {
-      filter: brightness(0.8);
-    }
+  strong {
+    cursor: pointer;
   }
 `;

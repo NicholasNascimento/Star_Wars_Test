@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Header } from "../../components/Header";
 import { DataContext } from "../../DataContext";
@@ -8,8 +8,11 @@ import { DataContext } from "../../DataContext";
 import * as S from "./styles";
 
 export function Character() {
+  const navigate = useNavigate();
   const { search, inputError, setInputError, name, totalPeople, totalPlanets, films, totalSpecies, totalVehicles, totalStarships } = useContext(DataContext);
   const { register } = useForm();
+  const key = (name);
+  const favorites = {key, name};
   const person = totalPeople.find(pers => pers.name === name);
   const planet = totalPlanets.find(plan => plan.name === name);
   const film = films.find(film => film.title === name);
@@ -51,13 +54,29 @@ export function Character() {
     }
   }
 
+  function handleFavorite(name: string) {
+    if (localStorage.getItem('name') === null) {
+      localStorage.setItem('name', JSON.stringify([favorites]));
+    } else {
+      localStorage.setItem(
+        'name',
+        JSON.stringify([
+          ...JSON.parse(localStorage.getItem('name')!),
+          favorites
+        ])
+      );
+    }
+
+    navigate("/favorites");
+  }
+
   return (
     <>
       <Header />
       <S.Container>
         <S.Content>
-        <button>
-          <Link to="/favorites" style={{ textDecoration: 'none', color: 'white' }}>Favoritar</Link>
+        <button onClick={() => handleFavorite(name)}>
+          Favoritar
         </button>
         <ul>
           {(person?.name === name) && 
