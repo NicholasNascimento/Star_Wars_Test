@@ -31,13 +31,15 @@ export function Favorites() {
       <Content>
         <p>Favorite List:</p>
         <Container>
-          {favoritesList.map(fav => {
-            return (
-              <ul key={fav.key}>
-                <strong onClick={() => handleMove(fav.name)} {...register("charName", { required: true })}>{fav.name}</strong>
-              </ul>
-            )
-          })}
+          {((favoritesList !== null) &&
+            favoritesList.map(fav => {
+              return (
+                <ul key={fav.key}>
+                  <strong onClick={() => handleMove(fav.name)} {...register("charName", { required: true })}>{fav.name}</strong>
+                </ul>
+              )
+            })
+          )}
         </Container>
       </Content>
     </>
