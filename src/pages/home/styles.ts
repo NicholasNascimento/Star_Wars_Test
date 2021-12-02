@@ -4,6 +4,22 @@ export const Container = styled.div`
   text-align: center;
   padding: 10rem 2rem;
 
+  form {
+    animation-name: star;
+    animation-duration: 1.5s;
+  }
+
+  @keyframes star {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
   button {
     margin-top: 1rem;
     font-size: 1rem;
