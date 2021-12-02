@@ -11,10 +11,10 @@ export function Header() {
       </Content>
       <Content>
         <button type="button">
-          <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Buscar</Link>
+          <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Search</Link>
         </button>
         <button type="button">
-          <Link to="/favorites" style={{ textDecoration: 'none', color: 'white' }}>Favoritos</Link>
+          <Link to="/favorites" style={{ textDecoration: 'none', color: 'white' }}>Favorite List</Link>
         </button>
       </Content>
     </Container>

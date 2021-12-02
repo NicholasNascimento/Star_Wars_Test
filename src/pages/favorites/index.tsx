@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Header } from "../../components/Header";
 import { DataContext } from "../../DataContext";
 
-import { Container } from "./styles";
+import { Container, Content } from "./styles";
 
 interface FavoriteListProps {
   key: string;
@@ -28,15 +28,18 @@ export function Favorites() {
   return (
     <>
       <Header />
-      <Container>
-        {favoritesList.map(fav => {
-          return (
-            <ul key={fav.key}>
-              <strong onClick={() => handleMove(fav.name)} {...register("charName", { required: true })}>{fav.name}</strong>
-            </ul>
-          )
-        })}
-      </Container>
+      <Content>
+        <p>Favorite List:</p>
+        <Container>
+          {favoritesList.map(fav => {
+            return (
+              <ul key={fav.key}>
+                <strong onClick={() => handleMove(fav.name)} {...register("charName", { required: true })}>{fav.name}</strong>
+              </ul>
+            )
+          })}
+        </Container>
+      </Content>
     </>
   )
 }

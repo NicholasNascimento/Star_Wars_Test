@@ -34,13 +34,13 @@ export function Home() {
               <GiSpaceship color="var(--white)" size="14rem"/>
             </div>
             <input
-              placeholder="Buscar personagem"
+              placeholder="Search for Character"
               {...register("charName", { required: true })}
               type="text"
             />
           </Content>
           <button type="submit">
-            Buscar
+            Search
           </button>
         </form>
       </Container>

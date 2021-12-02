@@ -54,7 +54,7 @@ export function Character() {
     }
   }
 
-  function handleFavorite(name: string) {
+  function handleFavorite() {
     if (localStorage.getItem('name') === null) {
       localStorage.setItem('name', JSON.stringify([favorites]));
     } else {
@@ -75,8 +75,8 @@ export function Character() {
       <Header />
       <S.Container>
         <S.Content>
-        <button onClick={() => handleFavorite(name)}>
-          Favoritar
+        <button onClick={() => handleFavorite()}>
+          Favorite
         </button>
         <ul>
           {(person?.name === name) && 

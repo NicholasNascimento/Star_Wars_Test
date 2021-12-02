@@ -16,3 +16,14 @@ export const Container = styled.div`
     cursor: pointer;
   }
 `;
+
+export const Content = styled.div`
+  text-align: center;
+  padding: 1rem;
+
+  p {
+    font-size: 20px;
+    padding: 1rem 0;
+    color: white;
+  }
+`;
