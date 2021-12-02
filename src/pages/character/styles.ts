@@ -28,11 +28,15 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  border-top-right-radius: 40%;
-  border-bottom-right-radius: 40%;
+  margin: auto;
+  width: 40%;
 
-  p {
+  strong {
+    cursor: pointer;
     display: grid;
-    line-height: 2rem;
+  }
+
+  .link {
+    border-top: 1px solid gray;
   }
 `;

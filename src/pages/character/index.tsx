@@ -42,9 +42,6 @@ export function Character() {
   const starshipPilots = totalPeople.filter(pilot => starship?.pilots.includes(pilot.url));
   const starshipFilms = films.filter(film => starship?.films.includes(film.url));
 
-  console.log(planet);
-  
-
   async function handleMove(data: string) {
     if(!inputError) {
       search(data);
@@ -63,195 +60,134 @@ export function Character() {
           <Link to="/favorites" style={{ textDecoration: 'none', color: 'white' }}>Favoritar</Link>
         </button>
         <ul>
-          {totalPeople.map(character => {
-            {if (character.name === name) {
-              return (
-                <ul key={character.name}>
-                  <p>Name: <strong>{character.name}</strong></p>
-                  <p>Height: <strong>{character.height}</strong></p>
-                  <p>Mass: <strong>{character.mass}</strong></p>
-                  <p>Hair color: <strong>{character.hair_color}</strong></p>
-                  <p>Skin color: <strong>{character.skin_color}</strong></p>
-                  <p>Eye color: <strong>{character.eye_color}</strong></p>
-                  <p>Birth year: <strong>{character.birth_year}</strong></p>
-                  <p>Gender: <strong>{character.gender}</strong></p>
-                  <p>Homeworld: {peoplePlanets.map(planetChar => (
-                      <strong onClick={() => handleMove(planetChar.name)} {...register("charName", { required: true })}>{planetChar.name}</strong>
-                  ))}</p>
-                  <p>Films: {peopleFilms.map(filmsChar => (
-                    <ul>
-                      <strong onClick={() => handleMove(filmsChar.title)} {...register("charName", { required: true })}>{filmsChar.title}</strong>
-                    </ul>
-                  ))}</p>
-                  <p>Species: {peopleSpecies.map(speciesChar => (
-                    <ul>
-                      <strong onClick={() => handleMove(speciesChar.name)} {...register("charName", { required: true })}>{speciesChar.name}</strong>
-                    </ul>
-                  ))}</p>
-                  <p>Vehicles: {peopleVehicles.map(vehiclesChar => (
-                    <ul>
-                      <strong onClick={() => handleMove(vehiclesChar.name)} {...register("charName", { required: true })}>{vehiclesChar.name}</strong>
-                    </ul>
-                  ))}</p>
-                  <p>Starships: {peopleStarships.map(starshipsChar => (
-                    <ul>
-                      <strong onClick={() => handleMove(starshipsChar.name)} {...register("charName", { required: true })}>{starshipsChar.name}</strong>
-                    </ul>
-                  ))}</p>
-                </ul>
-              )
-            }}
-          })}
+          {(person?.name === name) && 
+            <ul key={person.name}>
+              <p>Name: {person.name}</p>
+              <p>Height: {person.height}</p>
+              <p>Mass: {person.mass}</p>
+              <p>Hair color: {person.hair_color}</p>
+              <p>Skin color: {person.skin_color}</p>
+              <p>Eye color: {person.eye_color}</p>
+              <p>Birth year: {person.birth_year}</p>
+              <p>Gender: {person.gender}</p>
+              <p className="link">Homeworld: {peoplePlanets.map(planetChar => (
+                  <strong key={planetChar.url} onClick={() => handleMove(planetChar.name)} {...register("charName", { required: true })}>{planetChar.name}</strong>
+              ))}</p>
+              <p>Films: {peopleFilms.map(filmsChar => (
+                  <strong key={filmsChar.url} onClick={() => handleMove(filmsChar.title)} {...register("charName", { required: true })}>{filmsChar.title}</strong>
+              ))}</p>
+              <p>Species: {peopleSpecies.map(speciesChar => (
+                  <strong key={speciesChar.url} onClick={() => handleMove(speciesChar.name)} {...register("charName", { required: true })}>{speciesChar.name}</strong>
+              ))}</p>
+              <p>Vehicles: {peopleVehicles.map(vehiclesChar => (
+                  <strong key={vehiclesChar.url} onClick={() => handleMove(vehiclesChar.name)} {...register("charName", { required: true })}>{vehiclesChar.name}</strong>
+              ))}</p>
+              <p>Starships: {peopleStarships.map(starshipsChar => (
+                  <strong key={starshipsChar.url} onClick={() => handleMove(starshipsChar.name)} {...register("charName", { required: true })}>{starshipsChar.name}</strong>
+              ))}</p>
+            </ul>
+          }
 
-          {totalPlanets.map(planets => {
-            {if (planets.name === name) {
-              return (
-                <ul key={planets.name}>
-                  <p>Name: <strong>{planets.name}</strong></p>
-                  <p>Rotation Period: <strong>{planets.rotation_period}</strong></p>
-                  <p>Orbital Period: <strong>{planets.orbital_period}</strong></p>
-                  <p>Diameter: <strong>{planets.diameter}</strong></p>
-                  <p>Climate: <strong>{planets.climate}</strong></p>
-                  <p>Gravity: <strong>{planets.gravity}</strong></p>
-                  <p>Terrain: <strong>{planets.terrain}</strong></p>
-                  <p>Population: <strong>{planets.population}</strong></p>
-                  <p>Residents: {planetsResidents.map(planetResid => (
-                    <ul>
-                      <strong onClick={() => handleMove(planetResid.name)} {...register("charName", { required: true })}>{planetResid.name}</strong>
-                    </ul>
-                  ))}</p>
-                  <p>Films: {planetsFilms.map(planetFilms => (
-                    <ul>
-                      <strong onClick={() => handleMove(planetFilms.title)} {...register("charName", { required: true })}>{planetFilms.title}</strong>
-                    </ul>
-                  ))}</p>
-                </ul>
-              )
-            }}
-          })}
+          {(planet?.name === name) &&
+            <ul key={planet.name}>
+              <p>Name: {planet.name}</p>
+              <p>Rotation Period: {planet.rotation_period}</p>
+              <p>Orbital Period: {planet.orbital_period}</p>
+              <p>Diameter: {planet.diameter}</p>
+              <p>Climate: {planet.climate}</p>
+              <p>Gravity: {planet.gravity}</p>
+              <p>Terrain: {planet.terrain}</p>
+              <p>Population: {planet.population}</p>
+              <p className="link">Residents: {planetsResidents.map(planetResid => (
+                  <strong key={planetResid.url} onClick={() => handleMove(planetResid.name)} {...register("charName", { required: true })}>{planetResid.name}</strong>
+              ))}</p>
+              <p>Films: {planetsFilms.map(planetFilms => (
+                  <strong key={planetFilms.url} onClick={() => handleMove(planetFilms.title)} {...register("charName", { required: true })}>{planetFilms.title}</strong>
+              ))}</p>
+            </ul>
+          }
 
-          {films.map(films => {
-            {if (films.title === name) {
-              return (
-                <ul key={films.episode_id}>
-                  <p>Name: <strong>{films.title}</strong></p>
-                  <p>Director: <strong>{films.director}</strong></p>
-                  <p>Producer: <strong>{films.producer}</strong></p>
-                  <p>Characters: <strong>{filmCharacters.map(filmCharac => (
-                    <ul>
-                      <strong onClick={() => handleMove(filmCharac.name)} {...register("charName", { required: true })}>{filmCharac.name}</strong>
-                    </ul>
-                  ))}</strong></p>
-                  <p>Planets: <strong>{filmPlanets.map(filmPlan => (
-                    <ul>
-                      <strong onClick={() => handleMove(filmPlan.name)} {...register("charName", { required: true })}>{filmPlan.name}</strong>
-                    </ul>
-                  ))}</strong></p>
-                  <p>Starships: <strong>{filmStarships.map(filmStar => (
-                    <ul>
-                      <strong onClick={() => handleMove(filmStar.name)} {...register("charName", { required: true })}>{filmStar.name}</strong>
-                    </ul>
-                  ))}</strong></p>
-                  <p>Vehicles: <strong>{filmVehicles.map(filmVehic => (
-                    <ul>
-                      <strong onClick={() => handleMove(filmVehic.name)} {...register("charName", { required: true })}>{filmVehic.name}</strong>
-                    </ul>
-                  ))}</strong></p>
-                  <p>Species: <strong>{filmSpecies.map(filmSpec => (
-                    <ul>
-                      <strong onClick={() => handleMove(filmSpec.name)} {...register("charName", { required: true })}>{filmSpec.name}</strong>
-                    </ul>
-                  ))}</strong></p>
-                </ul>
-              )
-            }}
-          })}
+          {(film?.title === name) &&
+            <ul key={film.episode_id}>
+              <p>Name: {film.title}</p>
+              <p>Director: {film.director}</p>
+              <p>Producer: {film.producer}</p>
+              <p className="link">Characters: {filmCharacters.map(filmCharac => (
+                  <strong key={filmCharac.url} onClick={() => handleMove(filmCharac.name)} {...register("charName", { required: true })}>{filmCharac.name}</strong>
+              ))}</p>
+              <p>Planets: {filmPlanets.map(filmPlan => (
+                  <strong key={filmPlan.url} onClick={() => handleMove(filmPlan.name)} {...register("charName", { required: true })}>{filmPlan.name}</strong>
+              ))}</p>
+              <p>Starships: {filmStarships.map(filmStar => (
+                  <strong key={filmStar.url} onClick={() => handleMove(filmStar.name)} {...register("charName", { required: true })}>{filmStar.name}</strong>
+              ))}</p>
+              <p>Vehicles: {filmVehicles.map(filmVehic => (
+                  <strong key={filmVehic.url} onClick={() => handleMove(filmVehic.name)} {...register("charName", { required: true })}>{filmVehic.name}</strong>
+              ))}</p>
+              <p>Species: {filmSpecies.map(filmSpec => (
+                  <strong key={filmSpec.url} onClick={() => handleMove(filmSpec.name)} {...register("charName", { required: true })}>{filmSpec.name}</strong>
+              ))}</p>
+            </ul>
+          }
 
-          {totalSpecies.map(species => {
-            {if (species.name === name) {
-              return (
-                <ul key={species.name}>
-                  <p>Name: <strong>{species.name}</strong></p>
-                  <p>Classification: <strong>{species.classification}</strong></p>
-                  <p>Designation: <strong>{species.designation}</strong></p>
-                  <p>Average Height: <strong>{species.average_height}</strong></p>
-                  <p>Skin colors: <strong>{species.skin_colors}</strong></p>
-                  <p>Hair colors: <strong>{species.hair_colors}</strong></p>
-                  <p>Eye colors: <strong>{species.eye_colors}</strong></p>
-                  <p>Language: <strong>{species.language}</strong></p>
-                  <p>Homeworld: {speciePlanets.map(speciePlan => (
-                    <ul>
-                      <strong onClick={() => handleMove(speciePlan.name)} {...register("charName", { required: true })}>{speciePlan.name}</strong>
-                    </ul>
-                  ))}</p>
-                  <p>People: <strong>{specieCharacters.map(specieChar => (
-                    <ul>
-                      <strong onClick={() => handleMove(specieChar.name)} {...register("charName", { required: true })}>{specieChar.name}</strong>
-                    </ul>
-                  ))}</strong></p>
-                  <p>Films: <strong>{specieFilms.map(specieFilm => (
-                    <ul>
-                      <strong onClick={() => handleMove(specieFilm.title)} {...register("charName", { required: true })}>{specieFilm.title}</strong>
-                    </ul>
-                  ))}</strong></p>
-                </ul>
-              )
-            }}
-          })}
+          {(specie?.name === name) &&
+            <ul key={specie.name}>
+              <p>Name: {specie.name}</p>
+              <p>Classification: {specie.classification}</p>
+              <p>Designation: {specie.designation}</p>
+              <p>Average Height: {specie.average_height}</p>
+              <p>Skin colors: {specie.skin_colors}</p>
+              <p>Hair colors: {specie.hair_colors}</p>
+              <p>Eye colors: {specie.eye_colors}</p>
+              <p>Language: {specie.language}</p>
+              <p className="link">Homeworld: {speciePlanets.map(speciePlan => (
+                  <strong key={speciePlan.url} onClick={() => handleMove(speciePlan.name)} {...register("charName", { required: true })}>{speciePlan.name}</strong>
+              ))}</p>
+              <p>People: {specieCharacters.map(specieChar => (
+                  <strong key={specieChar.url} onClick={() => handleMove(specieChar.name)} {...register("charName", { required: true })}>{specieChar.name}</strong>
+              ))}</p>
+              <p>Films: {specieFilms.map(specieFilm => (
+                  <strong key={specieFilm.url} onClick={() => handleMove(specieFilm.title)} {...register("charName", { required: true })}>{specieFilm.title}</strong>
+              ))}</p>
+            </ul>
+          }
 
-          {totalVehicles.map(vehicles => {
-            {if (vehicles.name === name) {
-              return (
-                <ul key={vehicles.name}>
-                  <p>Name: <strong>{vehicles.name}</strong></p>
-                  <p>Model: <strong>{vehicles.model}</strong></p>
-                  <p>Manufacturer: <strong>{vehicles.manufacturer}</strong></p>
-                  <p>cost_in_credits: <strong>{vehicles.cost_in_credits}</strong></p>
-                  <p>Length: <strong>{vehicles.length}</strong></p>
-                  <p>Passengers: <strong>{vehicles.passengers}</strong></p>
-                  <p>Vehicle class: <strong>{vehicles.vehicle_class}</strong></p>
-                  <p>Pilots: <strong>{vehiclePilots.map(vehiclePilots => (
-                    <ul>
-                      <strong onClick={() => handleMove(vehiclePilots.name)} {...register("charName", { required: true })}>{vehiclePilots.name}</strong>
-                    </ul>
-                  ))}</strong></p>
-                  <p>Films: <strong>{vehicleFilms.map(vehicleFilms => (
-                    <ul>
-                      <strong onClick={() => handleMove(vehicleFilms.title)} {...register("charName", { required: true })}>{vehicleFilms.title}</strong>
-                    </ul>
-                  ))}</strong></p>
-                </ul>
-              )
-            }}
-          })}
+          {(vehicle?.name === name) &&
+            <ul key={vehicle.name}>
+              <p>Name: {vehicle.name}</p>
+              <p>Model: {vehicle.model}</p>
+              <p>Manufacturer: {vehicle.manufacturer}</p>
+              <p>cost_in_credits: {vehicle.cost_in_credits}</p>
+              <p>Length: {vehicle.length}</p>
+              <p>Passengers: {vehicle.passengers}</p>
+              <p>Vehicle class: {vehicle.vehicle_class}</p>
+              <p className="link">Pilots: {vehiclePilots.map(vehiclePilots => (
+                  <strong key={vehiclePilots.url} onClick={() => handleMove(vehiclePilots.name)} {...register("charName", { required: true })}>{vehiclePilots.name}</strong>
+              ))}</p>
+              <p>Films: {vehicleFilms.map(vehicleFilms => (
+                  <strong key={vehicleFilms.url} onClick={() => handleMove(vehicleFilms.title)} {...register("charName", { required: true })}>{vehicleFilms.title}</strong>
+              ))}</p>
+            </ul>
+          }
 
-          {totalStarships.map(starships => {
-            {if (starships.name === name) {
-              return (
-                <ul key={starships.name}>
-                  <p>Name: <strong>{starships.name}</strong></p>
-                  <p>Model: <strong>{starships.model}</strong></p>
-                  <p>Manufacturer: <strong>{starships.manufacturer}</strong></p>
-                  <p>cost_in_credits: <strong>{starships.cost_in_credits}</strong></p>
-                  <p>Length: <strong>{starships.length}</strong></p>
-                  <p>Passengers: <strong>{starships.passengers}</strong></p>
-                  <p>Starship class: <strong>{starships.starship_class}</strong></p>
-                  <p>Pilots: {starshipPilots.map(starshipPilot => (
-                    <ul>
-                      <strong onClick={() => handleMove(starshipPilot.name)} {...register("charName", { required: true })}>{starshipPilot.name}</strong>
-                    </ul>
-                  ))}</p>
-                  <p>Films: <strong>{starshipFilms.map(starshipFilms => (
-                    <ul>
-                      <strong onClick={() => handleMove(starshipFilms.title)} {...register("charName", { required: true })}>{starshipFilms.title}</strong>
-                    </ul>
-                  ))}</strong></p>
-                </ul>
-              )
-            }}
-          })}
+          {(starship?.name === name) &&
+            <ul key={starship.name}>
+              <p>Name: {starship.name}</p>
+              <p>Model: {starship.model}</p>
+              <p>Manufacturer: {starship.manufacturer}</p>
+              <p>cost_in_credits: {starship.cost_in_credits}</p>
+              <p>Length: {starship.length}</p>
+              <p>Passengers: {starship.passengers}</p>
+              <p>Starship class: {starship.starship_class}</p>
+              <p className="link">Pilots: {starshipPilots.map(starshipPilot => (
+                  <strong key={starshipPilot.url} onClick={() => handleMove(starshipPilot.name)} {...register("charName", { required: true })}>{starshipPilot.name}</strong>
+              ))}</p>
+              <p>Films: {starshipFilms.map(starshipFilms => (
+                  <strong key={starshipFilms.url} onClick={() => handleMove(starshipFilms.title)} {...register("charName", { required: true })}>{starshipFilms.title}</strong>
+              ))}</p>
+            </ul>
+          }
         </ul>
-        
         </S.Content>
       </S.Container>
     </>

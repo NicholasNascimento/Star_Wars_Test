@@ -48,7 +48,6 @@ interface FilmsProps {
   episode_id: number;
   director: string;
   producer: string;
-  released_date: string;
   characters: string[];
   planets: string[];
   starships: string[];
@@ -65,9 +64,8 @@ interface SpeciesProps {
   skin_colors: string;
   hair_colors: string;
   eye_colors: string;
-  average_lifespan: string;
-  homeworld: string;
   language: string;
+  homeworld: string;
   people: string[];
   films: string[];
   url: string;
@@ -79,11 +77,7 @@ interface VehiclesProps {
   manufacturer: string;
   cost_in_credits: string;
   length: string;
-  max_atmosphering_speed: string;
-  crew: string;
   passengers: string;
-  cargo_capacity: string;
-  consumables: string;
   vehicle_class: string;
   pilots: string[];
   films: string[];
@@ -96,13 +90,7 @@ interface StarshipsProps {
   manufacturer: string;
   cost_in_credits: string;
   length: string;
-  max_atmosphering_speed: string;
-  crew: string;
   passengers: string;
-  cargo_capacity: string;
-  consumables: string;
-  hyperdrive_rating: string;
-  MGLT: string;
   starship_class: string;
   pilots: string[];
   films: string[];
